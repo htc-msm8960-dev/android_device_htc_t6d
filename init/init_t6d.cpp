@@ -76,7 +76,7 @@ void vendor_load_properties()
     if (bootmid == "0P3P20000") {
         /* t6dwg (t6dwg) */
         common_properties();
-        cdma_properties("0", "7");
+        cdma_properties("0", "22, 20");
         property_override("ro.product.model", "HTC 809d");
         property_override("ro.build.fingerprint", "htc/htccn_chs_ct/t6dwg:5.0.2/LRX22G/524896.8:user/release-keys");
         property_override("ro.build.description", "3.22.1401.8 CL524896 release-keys");
@@ -96,16 +96,26 @@ void vendor_load_properties()
     } else if (bootmid == "0P3P30000") {
         /* t6dug (t6dug) */
         common_properties();
-        cdma_properties("0", "7");
+        cdma_properties("0", "0");
         property_override("ro.product.model", "HTC 8060");
-        property_override("ro.build.fingerprint", "htc/htccn_chs_cmcc/t6dug:5.0.2/LRX22G/524896.8:user/release-keys");
-        property_override("ro.build.description", "3.22.1403.8 CL524896 release-keys");
+        property_override("ro.build.fingerprint", "htc/htccn_chs_cu/t6dug:5.0.2/LRX22G/524896.9:user/release-keys");
+        property_override("ro.build.description", "3.22.1402.9 CL524896 release-keys");
         property_override("ro.product.device", "t6dug");
         property_override("ro.build.product", "t6dug");
-        property_override("telephony.sms.pseudo_multipart", "1");
-        property_override("persist.radio.mode_pref_nv10", "1");
-        property_override("persist.radio.dont_use_dsd", "true");
-        property_set("ro.ril.set.mtusize", "1422");
+        property_override("ro.baseband.arch", "dsda");
+        property_set("ro.ril.enable.sdr", "0");
+        property_set("ro.ril.hsdpa.category", "14");
+        property_set("ro.ril.hsupa.category", "6");
+        property_set("ro.ril.hsxpa", "4");
+        property_set("ro.ril.enable.r8fd", "1");
+        property_set("ro.ril.disable.cpc", "1");
+        property_set("persist.radio.multisim.config", "dsda");
+        property_set("ro.ril.oem.ecclist", "112,911,120,122");
+        property_set("ro.ril.oem.nosim.ecclist", "110,112,911,000,08,999,118,119,120,122");
+        property_set("ro.ril.oem.normalcall.ecclist", "120,122");
+        property_set("ro.ril.disable.fd.plmn.prefix", "23402,23410,23411,23420,27202");
+        property_set("ro.ril.enable.a52", "0");
+        property_set("ro.ril.enable.a53", "1");
         property_set("ro.ril.svdo", "true");
     }
 
