@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2013 The CyanogenMod Project
+# Copyright (C) 2017 LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,23 +11,19 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# call the proprietary setup
-$(call inherit-product-if-exists, vendor/htc/t6d/t6d-vendor.mk)
+LOCAL_PATH := $(call my-dir)
 
-# local overlays
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+include $(CLEAR_VARS)
 
-# FM radio
-PRODUCT_PACKAGES += \
-    FM2 \
-    libqcomfm_jni \
-    qcom.fmradio
+LOCAL_SRC_FILES := \
+    ril_qsc.cpp
 
-# RIL-QSC Shim
-PRODUCT_PACKAGES += \
-    libril_qscshim
+LOCAL_SHARED_LIBRARIES := libbinder
 
-# Inherit from t6-common
-$(call inherit-product, device/htc/t6-common/t6-common.mk)
+LOCAL_MODULE := libril_qscshim
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+
+include $(BUILD_SHARED_LIBRARY)
+

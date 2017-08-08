@@ -52,6 +52,7 @@ void common_properties()
     property_set("rild.libargs", "-d /dev/smd0");
     property_set("rild.libpath", "/system/lib/libril-qc-qmi-1.so");
     property_set("rild_dsda.libpath", "/system/lib/libril-qc-qmi-qsc.so");
+    property_set("ro.telephony.ril.config", "simactivation,sim2gsmonly");
 }
 
 void cdma_properties(char const default_cdma_sub[], char const default_network[])
@@ -76,15 +77,21 @@ void vendor_load_properties()
     if (bootmid == "0P3P20000") {
         /* t6dwg (t6dwg) */
         common_properties();
-        cdma_properties("0", "22, 20");
+        cdma_properties("0", "4, 1");
         property_override("ro.product.model", "HTC 809d");
         property_override("ro.build.fingerprint", "htc/htccn_chs_ct/t6dwg:5.0.2/LRX22G/524896.8:user/release-keys");
         property_override("ro.build.description", "3.22.1401.8 CL524896 release-keys");
         property_override("ro.product.device", "t6dwg");
         property_override("ro.build.product", "t6dwg");
         property_override("ro.baseband.arch", "dsda");
+        property_override("ro.telephony.ril_class", "HTCQualcommMaxCDMARIL");
+        property_set("ril.subscription.types", "NV,RUIM");
+        property_set("persist.radio.mode_pref_nv10", "1");
+        property_set("ro.telephony.get_imsi_from_sim", "true");
+        property_set("ro.multisim.set_audio_params", "true");
         property_set("ro.telephony.default_cdma_sub", "0");
         property_set("ro.ril.enable.sdr", "0");
+        property_set("persist.radio.dont_use_dsd", "true");
         property_set("persist.radio.multisim.config", "dsda");
         property_set("ro.ril.oem.ecclist", "110,112,119,120,911,999");
         property_set("ro.ril.oem.nosim.ecclist", "110,112,119,120,911,999,08,000,118,122");
@@ -96,7 +103,7 @@ void vendor_load_properties()
     } else if (bootmid == "0P3P30000") {
         /* t6dug (t6dug) */
         common_properties();
-        cdma_properties("0", "0");
+        cdma_properties("0", "7, 1");
         property_override("ro.product.model", "HTC 8060");
         property_override("ro.build.fingerprint", "htc/htccn_chs_cu/t6dug:5.0.2/LRX22G/524896.9:user/release-keys");
         property_override("ro.build.description", "3.22.1402.9 CL524896 release-keys");

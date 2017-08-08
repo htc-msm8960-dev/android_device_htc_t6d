@@ -33,9 +33,15 @@ TARGET_OTA_ASSERT_DEVICE := t6dwg, t6dug
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := t6dwg
 
+# Kernel
+TARGET_KERNEL_CONFIG := t6dwg_defconfig
+
 # Vendor Init
 TARGET_INIT_VENDOR_LIB := libinit_t6d
 TARGET_RECOVERY_DEVICE_MODULES := libinit_t6d
+
+# RIL Class
+BOARD_RIL_CLASS := ../../../device/htc/t6d/ril
 
 # inherit from the proprietary version
 -include vendor/htc/t6d/BoardConfigVendor.mk
